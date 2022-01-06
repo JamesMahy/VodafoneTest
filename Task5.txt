@@ -1,0 +1,59 @@
+Line 3:
+Prefer to have stylesheets in their own file to provide better separation of concerns
+
+Line 7:
+Misspelling of the word "Fuel"
+Instead of passing this as a child, we should pass it as a normal prop. eg "fuel" instead of "children"
+Also, we could destructure the props to make it cleaner to read, eg `{fuel}` instead of `props` in the method signature.
+If you do, you'll need to update Line 8 to.
+
+Line 8:
+In line with comment on Line 3, we should be using className and CSS classes, directly styling components can make maintainability difficult
+
+Line 11:
+We could destructure `fuel` to make it more readable
+
+Line 13:
+Please rename your state returns to something more meaningful, perhaps "showAlert" and "setShowAlert"
+Although please refer to my comments for 15-19.
+
+Line 15-19:
+This code will run every re-render even if fuel hasn't changed value.
+We should be limiting the scope of useEffect to the variables we're watching for state changes.
+
+However you could simplify this component by removing useState and useEffect and have the return based on the value of fuel.
+
+Let me know when you're free for a chat and we can go through
+
+Line 16:
+Can we confirm the definition of "too much fuel" with the product owner please
+
+Line 28 - 59:
+This should be in it's own, functional component and not extending the App Component.
+Helps provide better separation of concerns and ensures that features are isolated to their own components.
+
+Line 33:
+Please rename the states to something more meaningful, eg instead of `x` and `f` it should be `position` and `fuel`
+It makes it easier to read and makes the code self documenting
+
+
+Line 39 - 45:
+setInterval isn't reliable for animations, cycles can be missed, it doesn't take advantage of dedicated rendering and can cause a poor user experience.
+A better approach would be to use requestAnimationFrame or CSS animations
+
+Let's chat through it when you're free
+
+Line 47:
+In-line with my comment for Line 33, we can then destructure state to
+const { position, fuel } = this?.state;
+Which will make the code more readable, make sure to update Lines 54 and 55
+
+Please use let or const to ensure we maintain better control over the scope of our variables, var will be hoisted to the immediate function body
+which whilst not an issue here, can cause confusion and bugs as the application grows.
+
+Line 54:
+Typo is the word "CarsFuel"
+We shouldn't be passing fuel as a child element, it should be passed as a prop
+
+
+
